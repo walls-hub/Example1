@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_student_tree1" model="ir.ui.view">
+            <field name="name">att.student.tree</field>
+            <field name="model">att.student</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="book">
+                    <field name="name" />
+                    <field name="attendance" />
+                    <field name="date" />
+                    <field name="master_name" />
+
+                </tree>
+            </field>
+        </record>
+        <record id="view_student_form1" model="ir.ui.view">
+            <field name="name">att.student.form</field>
+            <field name="model">att.student</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="book" >
+                    <sheet>
+                        <notebook colspan="4">
+                            <page name="Attendance_information"
+                                string="Attendance_information" col="10" colspan="4">
+                                <group col="1" colspan="4" name="Book info">
+                                      <field name="name" />
+                                      <field name="attendance" />
+                                      <field name="date" />
+                                      <field name="master_name" />
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_view_students1">
+            <field name="name">Attendance</field>
+            <field name="res_model">att.student</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create"> Click create to --> Add book
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_school" name="Citadel Open Academy"   />
+
+        <menuitem id="school_student1" name="Attendance" parent="menu_school"
+                  action="action_view_students1"/>
+
+    </data>
+</odoo>
